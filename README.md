@@ -20,14 +20,18 @@ Can only store itens from same type
 
 ### Operations
 
-add(item) - insert item at the end o the list, O(1)
-add(index,item) - in order to insert an item in a givem index, first it has to see if the index is occupied ( O(1) Complexty), then, if it is, it would move every item from this index foward, to the next index, disoccuping the desired index.
+- add(item) - insert item at the end o the list, O(1)
+
+- add(index,item) - in order to insert an item in a givem index, first it has to see if the index is occupied ( O(1) Complexty), then, if it is, it would move every item from this index foward, to the next index, disoccuping the desired index.
 This opperation has linear time complexity, because it has to move the itens, O(N)
-removeLast - Removes the last index, O(1)
-remove(index) - Takes linear time complexity, because it has to swift itens to reconstruct the array O(N)
+
+- removeLast - Removes the last index, O(1)
+
+- remove(index) - Takes linear time complexity, because it has to swift itens to reconstruct the array O(N)
 
 ### Conclusion
 
 Should use it to add or remove itens from the last index. Constant time complexty O(1)
+
 Shouldn`t use to add or remove itens in a specific index. Linear time complexty O(N)
     
