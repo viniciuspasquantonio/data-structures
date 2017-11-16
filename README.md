@@ -34,4 +34,61 @@ This opperation has linear time complexity, because it has to move the itens, O(
 Should use it to add or remove itens from the last index. Constant time complexty O(1)
 
 Shouldn`t use to add or remove itens in a specific index. Linear time complexty O(N)
-    
+
+## Linked List
+
+nodes pointing to another node, and the last node points to null
+
+n1 -> n2 -> n3 -> null
+
+A node contains two importante information, a data, that can be an int, string, object, and the reference to the next node
+```
+public class Node {
+	int value;
+	Node nextNode;
+}
+```
+LinkedList can be used as stacks, ques, and many other data structures
+Does not has randon access
+many basic operations such as getting the last node, or finding one, must scan all or great part of the list
+
+## Advantages
+
+- Easy to implement
+- Dinamic data structure (array are not)
+- Grow organically, because it doesn t need to define the size of it in compilation time, or recreate it if it is full. Just update reference O(1)
+- Remove is very fast once it only has to change the reference of the nextNode
+- very efficient if want to manipulate the first elements. To add node in the beginin or remove from the beginin, it takes O(1)
+
+## Disadvantages
+
+- Need more space sice it stores the memory reference of the next node
+- Needs to be iterated from the begining of the list, it does not has random access, it uses sequence access
+- Cant iterate backwards, because it only stores the next node. In order to store the previous node, it must implement a double linked list, which stores the next and the previus node, the downside, is tha it wast more space to store both references
+
+
+## Operations
+
+### Insert
+Just insert the node, and set the reference to the next node
+```
+  n1(5) -> n2 (10) -> null
+  
+  To insert a node with value 3, just create it, and set reference to the n1(5), the structure would be like this
+  
+  n1(3) -> n2 (5) -> n3(10) -> null
+```
+Insertion in the begining of the list is O(1) complexity, while the array needs to swift all the elements, making space for the new first element, costing O(N) time complexity.
+This operation is extremelly fast
+
+### Remove
+
+Just insert the node, and set the reference to the next node
+```
+n1(3) -> n2 (5) -> n3(10) -> null
+  
+To remove the first node with value 3, just remove it! O(1)
+  
+n1(5) -> n2 (10) -> null
+```
+Removing the first node is O(1) complexity
