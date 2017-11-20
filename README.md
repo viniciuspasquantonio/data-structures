@@ -141,3 +141,11 @@ Can iterate foward and backward
 
 It is not memory friendly, once it has to store to references in wach node
 
+
+## LinkedList vs Array
+
+                            LinkedList                 Array
+Search                          O(N)                    O(1)
+Insert at the start             O(1)                    O(N)       
+Insert at the end               O(N)                    O(1)
+Memory space                    O(N)                    O
