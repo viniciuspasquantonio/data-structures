@@ -52,7 +52,7 @@ LinkedList can be used as stacks, ques, and many other data structures
 Does not has randon access
 many basic operations such as getting the last node, or finding one, must scan all or great part of the list
 
-## Advantages
+### Advantages
 
 - Easy to implement
 - Dinamic data structure (array are not)
@@ -60,17 +60,22 @@ many basic operations such as getting the last node, or finding one, must scan a
 - Remove is very fast once it only has to change the reference of the nextNode
 - very efficient if want to manipulate the first elements. To add node in the beginin or remove from the beginin, it takes O(1)
 
-## Disadvantages
+### Disadvantages
 
 - Need more space sice it stores the memory reference of the next node
 - Needs to be iterated from the begining of the list, it does not has random access, it uses sequence access
 - Cant iterate backwards, because it only stores the next node. In order to store the previous node, it must implement a double linked list, which stores the next and the previus node, the downside, is tha it wast more space to store both references
 
 
-## Operations
+### Operations
 
 ### Insert
-Just insert the node, and set the reference to the next node
+
+Insert at the beginin O(1)
+Inserting atthe end O(N)
+
+linkedList.insertAtStart(5)
+To insert at the beginin, just insert the node, and set the reference to the next node
 ```
   n1(5) -> n2 (10) -> null
   
@@ -81,14 +86,58 @@ Just insert the node, and set the reference to the next node
 Insertion in the begining of the list is O(1) complexity, while the array needs to swift all the elements, making space for the new first element, costing O(N) time complexity.
 This operation is extremelly fast
 
+linkedList.insertAtEnd(25)
+
+```
+  n1(12) -> n2(4) -> n3(7) -> n4(10) -> n5(2) -> null
+  
+  To insert a node with value 25, at the end, we must,
+  	- find the last node O(N)
+	- update reference O(1)
+	
+  
+  n1(12) -> n2(4) -> n3(7) -> n4(10) -> n5(2) -> n6(25) -> null
+```
+To insert at the end of the linked list, we must iterate through all the list,O(N) , to find the last node node ( which next nod is null), and we also have to update the reference when we get there O(1).
+So, O(N) + O(1) is O(N)
+
 ### Remove
 
-Just insert the node, and set the reference to the next node
+Remove at the beginin O(1) time complexity
+Remove at a given place the end O(N) complexity
+
+linkedList.removeFirst()
+Just remove the root node
 ```
 n1(3) -> n2 (5) -> n3(10) -> null
   
-To remove the first node with value 3, just remove it! O(1)
+To remove the first node with value 3, just remove it! O(1) time complexity
   
 n1(5) -> n2 (10) -> null
 ```
 Removing the first node is O(1) complexity
+
+linkedList.remove(10)
+Search through the list to find the node with value 10, when found, update the reference of the previous, to make it point to the node that node(10) whas pointing to.
+```
+iterate through the node and find node with value 10 O(N) time complexity
+n1(3) -> n2 (5) -> n3(10) -> n4(16) -> null
+remove n3 and update reference of n2
+n1(3) -> n2(5) -> n4(16) -> null
+```
+### Conclusion
+
+LinkedList are good for manipulating elements at the begining of the list. It does not has random acess, so it is not good to use it when we are not going to work if elements at the begining.
+
+## Doubly LinkedList
+
+It is a linkedList that stores the reference to the previousNode. Linked list can go from n1 to n3, but it canot go from n3 to n1, so, when we need it, we use Doubly LinkedList
+
+### Advantages
+
+Can iterate foward and backward
+
+### Disadvantages
+
+It is not memory friendly, once it has to store to references in wach node
+
