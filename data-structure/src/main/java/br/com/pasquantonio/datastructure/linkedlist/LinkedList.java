@@ -59,14 +59,14 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
 		
 	}
 
-	public void tranverseList() {
+	public void traverseList() {
 		if(this.root == null){
 			return;
 		}
 
 		Node<T> actualNode = this.root;
 		while(actualNode != null){
-			System.out.print(actualNode+" - " );
+			System.out.print(actualNode+" -> " );
 			actualNode = actualNode.getNextNode();
 		}
 	}
