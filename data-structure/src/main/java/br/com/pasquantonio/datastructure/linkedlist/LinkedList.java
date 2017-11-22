@@ -1,6 +1,6 @@
 package br.com.pasquantonio.datastructure.linkedlist;
 
-public class LinkedList<T extends Comparable<T>> implements List {
+public class LinkedList<T extends Comparable<T>> implements List<T> {
 
 	private Node<T> root;
 	private int sizeOfList;
@@ -74,5 +74,6 @@ public class LinkedList<T extends Comparable<T>> implements List {
 	public int size() {
 		return this.sizeOfList;
 	}
+
 
 }
