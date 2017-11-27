@@ -150,3 +150,97 @@ It is not memory friendly, once it has to store to references in wach node
 | Insert at the start   |     O(1)      |     O(N)      | 
 | Insert at the end     |     O(N)      |     O(N)      |
 | Memory space          |     O(N)      |     O         |
+
+
+
+## Stacks
+
+LIFO structure, last in first out
+
+basic operations, all with O(1) complex time, push() pop() peek()
+
+### Operations
+
+Push()
+
+pushes a item at the top of the stack
+
+```     
+| |    		  | |  		    |3|	
+| | -> push(5) -> |5| -> push(3) -> |5|
+ -		   -		     -
+```
+
+Pop()
+return the last data from the stack, and removes it
+
+```     
+|3|    		| |  	return 3 and remove it	    
+|5| -> pop() -> |5| 
+ -		 -		    
+```
+
+Peek()
+return the last data from the stack, withou removing it
+
+```     
+|3|    		 |3|  		return 3 withous removing it    
+|5| -> peek() -> |5| 
+ -		  -		    
+```
+
+## Memory managment (stack,heap)
+
+### Stack
+- Special region of the memory (RAM)
+- Stores data of subroutines, functions, methods
+- Most common use of stack
+
+#### Advantages
+- It keeps the track of which point a subroutine should return control when executed
+- Stores local variables
+
+When a function declares a local variable, it is pushed to the stack
+Everytime the funcion is finished, all the variables stored in the stack are lost, they are poped
+Stacks has a limited space in memory
+
+### Heap
+
+Region of memory not managed by the OS
+It is not limited, it must must be allocated
+Must get rid of unused memory because it is not managed by OS. In java, we hava GC to do it
+Memory leak if it has all space used
+It is slower because it has reference using pointers
+
+### Stacks in Recursion
+
+When we use recursion, the method calls are pilled up in stacks. If the depth of the recursion is too much, it could cause a stack overflow
+
+```
+Factorial of 4
+
+public int factorial(int number){
+	if(number == 0){
+		return 1;
+	}
+	return number * factorial(number-1);
+}
+
+Every function is pilled up, and when it reaches the base condition  (if(number == 0)), it starts to pop the results
+factorial(3)
+
+|     	      |		|     	        |	|     	        |	| 1*factorial(0)|
+|     	      |		|     	        |	| 2*factorial(1)|	| 2*factorial(1)|
+|     	      |		| 3*factorial(2)|	| 3*factorial(2)|	| 3*factorial(2)|
+|factorial(4) | -> 	| factorial(3)  | ->	| factorial(3)  | ->	| factorial(3)  |	
+ -------------		 -------------		  -------------		 -------------
+1*factorial(0) reaches the base condition, now is time to pop the result
+
+|    return 1	|	|     	        |	|     	        |	| 		|
+| 2*factorial(1)|	|  2*1 return 2 |	| 		|	|  		|
+| 3*factorial(2)|	| 3*factorial(2)|	| 3*2 return 6	|  	|		|
+| factorial(3)  | -> 	| factorial(3)  | ->	| factorial(3)  | ->	| return 6  	|	
+ -------------		 -------------		  -------------		 -------------
+
+```
+Rrecursion is not good when the depth of the algorithin is too huge, like factorial of 1000000, it would possibly cause an stack overflow
