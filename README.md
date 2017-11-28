@@ -296,4 +296,103 @@ _______
 -------    
 
 ```
+## Binary Search Trees
 
+- It is a Data structure
+- Keeps its data in sorted order, to get advantage of binary search
+- Binary search is O(logN), removes data that does not need to be comparsion each time it searches for some especific data, which is way better than normal search, which is linear O(N)
+
+### Insertion
+
+Start insertion in the root node, then,  if the data we want to insert is greater than the root, we insert it at the right if it doesnt has any right chield, because if it has, we compare the data with the right child as well, until it doesnt have. If is smaller, we insert it at the left, also comparing with the child
+
+```
+binaryTree.insert(4)
+
+		(4)
+		
+binaryTree.insert(10)
+	(4)
+	   \
+	   (10)
+	   
+binaryTree.insert(1)
+	 (4)
+	/   \
+      (1)   (10)
+binaryTree.insert(11)
+	 (4)
+	/   \
+      (1)   (10)
+      		\
+		(11)
+      
+
+```
+
+### Search
+
+When searching, we start at the root node, and if the data we are looking is greater than the root, we search at the right node, if is smaller, we search at the left node, and so on through its childs, until we find it. 
+O(logN) because in every comparison we get rid of half of the data we have to look
+
+To find the smalles, we just go to the last node at the left, it is the smallest.
+To find the greatest, we go to the last node at the rigth, it is the greatest.
+
+### Delete
+
+Soft delete: dont remove the node, just mark it as deleted. It is not that eficient
+
+Main three possible cases:
+ - when the node is a leaf node
+ - when the node has a single child
+ - when the node has two child
+ 
+Remove Leaf node
+
+```
+                        binaryTree.remove(1)
+	 (4)						  (4)
+	/   \						     \
+      (1)   (10)           ->          			      (10)
+      		\						\
+		(11)					       (11)
+		
+Update the reference of the leftNode at node (4), updating it to null
+
+Complexity: Find the node N(1), O(logN) + remove it or update reference to null, O(1) -> O(logN) + O(1) = O(logN)
+```
+
+Remove Node with one child
+
+```
+                        binaryTree.remove(10)
+	 (4)						  (4)
+	/   \						 /    \
+      (1)   (10)           ->          		       (1)    (11)
+      		\						
+		(11)					       
+		
+Update the reference of the rightNode at node (4), updating it to the reference of the rightNode of the node N(10), making N(4)`s rightChild pont to n(11)
+
+Complexity: Find the node N(1), O(logN) + make the parentChild set its rigthChild to point to its rightgrandchild, O(1) -> O(logN) + O(1) = O(logN)
+```
+
+Remove Node with two child
+
+```
+    binaryTree.remove(10)                   swap with the greatest 			swap with the smallest
+					         at left subtree                             at the right subtree
+	(4)						  (4)					 (4)
+	/   \						 /    \					/    \
+      (1)   (10)           ->          		       (1)    (9) 			       (1)    (11)
+      	    /	\				              /  \		                      /   \
+	  (9)	(12)                                         (8) (12)                               (9)    (12)
+	  /	/   \						 /   \	                            /        \
+	(8)    (11) (14)					(11) (14)                          (8)        (14)
+
+This is more complex, we can do it in two ways.
+We can take the greatest node at the left subtree (n(9), n(8)), swap it and then remove n(10) or
+We can take the smallest node at the right subtree (n(12), n(11),n(14)), swap it and then remove n(10) 
+
+Complexity: O(logN)
+```
