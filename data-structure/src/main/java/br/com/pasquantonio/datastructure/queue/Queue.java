@@ -15,6 +15,7 @@ public class Queue<T extends Comparable<T>> {
 	public int size(){
 		return count;
 	}
+//	O(1)
 	public void enqueue(T data){
 		count++;
 		Node<T> oldLastNode = this.lastNode;
@@ -26,6 +27,7 @@ public class Queue<T extends Comparable<T>> {
 		}
 	}
 	
+//	O(1)
 	public T dequeue(){
 		if(isEmpty()){
 			this.lastNode = null;
@@ -38,6 +40,7 @@ public class Queue<T extends Comparable<T>> {
 		return data;
 	}
 	
+//	O(1)
 	public T peek(){
 		count--;
 		if(isEmpty()) return null;
