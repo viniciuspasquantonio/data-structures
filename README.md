@@ -244,3 +244,56 @@ factorial(3)
 
 ```
 Rrecursion is not good when the depth of the algorithin is too huge, like factorial of 1000000, it would possibly cause an stack overflow
+
+
+
+## Queu
+
+FIFO structure, first in first out
+Basic operations are, enqueue, dequeue and peek
+
+### Applications
+
+Usually used when two threads share the same resource, or the cpu schedule a task
+Very important por BFS graph algorithims
+
+Enqueue 
+add the value at the end of the queue. O(1) time complexity
+```
+queue.enqueue(10) 
+_______
+    10
+-------
+queue.enqueue(5) 
+_______
+  5 10
+-------   
+
+```
+Denqueue 
+denqueue the value at the begining of the queue, the first value becaus it is a FIFO structure. O(1) time complexity
+```
+_______
+ 10 5 6
+-------  
+queue.dequeue() 
+_______
+  10 5
+-------    
+
+```
+
+Peek 
+return the first value of the queue, without removing it. O(1) time complexity
+
+```
+_______
+ 10 5 6
+-------  
+queue.peek() returns 6
+_______
+ 10 5 6
+-------    
+
+```
+
