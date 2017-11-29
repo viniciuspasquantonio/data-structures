@@ -457,3 +457,47 @@ Start with leftsubtree,  then the right subtre and then the root, all recursivel
 | Delete  |     O(logN) |     O(N)      |
 
 If the tree gets unbalanced, it can happens the worstcase, so thats is extremelly important to keep it balanced
+
+## AVL Tree
+
+AVL Tree is a tree that balances itself when insert or remove a node.
+While BST can get unbalanced, making the time complexity O(N), AVL always balances itself, guaranteeing that search will always be O(logN)
+
+Basic operations are the same as BST, only insertion that needs to check if the tree is balanced.
+The tree is balanced, when the height of the left and right nodes has at most 1 height of difference
+
+The height is the number os rows that a node has beneth it. 
+
+```
+   	 (4)	
+	/   \	
+      (1)   (10)
+      	    /	\
+	  (9)	(12)
+	  /	/   \
+	(8)    (11) (14)
+	
+N(8), N(1), N(11) and N(14) height is 0
+N(9), N(12) height is 1
+N(10) height is 2
+N(4) height is 3
+
+This tree is unbalanced, because the leftchild height of N(4) is 0, and the rightchild height is 2. The difference between then is 2, which is higher than 1, so the tree needs to be balanced
+```
+### Rotations
+
+When a tree is unbalanced, we need to rotate it
+
+
+```
+                                  
+   	 (4)	                                             (10)
+	/   \	                          		    /    \
+      (1)   (10)			                  (4)	 (12)
+      	    	\  		------->		 /	 /	 
+	  	(12)        leftRotate(10)             (1)     (11)    
+	  	/       
+	      (11)
+```
+
+We can leftRotate or rightRotate. In this case, leftRotate(10), N(10) is the rightChild of N(4), so, then, N(4) becomes the leftChild of N(10)
