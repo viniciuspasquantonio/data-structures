@@ -7,43 +7,45 @@ public class Queue<T extends Comparable<T>> {
 	private Node<T> firstNode;
 	private Node<T> lastNode;
 	private int count;
-	
-	private boolean isEmpty(){
+
+	private boolean isEmpty() {
 		return this.firstNode == null;
 	}
-	
-	public int size(){
+
+	public int size() {
 		return count;
 	}
-//	O(1)
-	public void enqueue(T data){
+
+	// O(1)
+	public void enqueue(T data) {
 		count++;
 		Node<T> oldLastNode = this.lastNode;
 		this.lastNode = new Node<T>(data);
-		if(isEmpty()){
+		if (isEmpty()) {
 			this.firstNode = this.lastNode;
-		}else{
+		} else {
 			oldLastNode.setNextNode(this.lastNode);
 		}
 	}
-	
-//	O(1)
-	public T dequeue(){
-		if(isEmpty()){
+
+	// O(1)
+	public T dequeue() {
+		if (isEmpty()) {
 			this.lastNode = null;
 			return null;
 		}
 		count--;
 		T data = this.firstNode.getData();
 		this.firstNode = this.firstNode.getNextNode();
-		
+
 		return data;
 	}
-	
-//	O(1)
-	public T peek(){
+
+	// O(1)
+	public T peek() {
 		count--;
-		if(isEmpty()) return null;
+		if (isEmpty())
+			return null;
 		return this.firstNode.getData();
 	}
 }
