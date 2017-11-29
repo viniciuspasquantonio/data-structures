@@ -247,7 +247,7 @@ Rrecursion is not good when the depth of the algorithin is too huge, like factor
 
 
 
-## Queu
+## Queue
 
 FIFO structure, first in first out
 Basic operations are, enqueue, dequeue and peek
@@ -396,3 +396,64 @@ We can take the smallest node at the right subtree (n(12), n(11),n(14)), swap it
 
 Complexity: O(logN)
 ```
+### Traversal
+
+It has 3 ways of traversing through the tree
+
+- In-order Traversal
+- Pre-order Traversal
+- Post-order Traversal
+
+
+```
+In-order Traversal
+
+	 (4)	
+	/   \	
+      (1)   (10)
+      	    /	\
+	  (9)	(12)
+	  /	/   \
+	(8)    (11) (14)
+Start with the leftsubtree, then the root node, then the right sidetree
+1 -> 4 -> 8 -> 9 -> 10 -> 11 -> 12 -> 14	
+It is  in the numerical order
+```
+```
+Pree-order Traversal
+
+	 (4)	
+	/   \	
+      (1)   (10)
+      	    /	\
+	  (9)	(12)
+	  /	/   \
+	(8)    (11) (14)
+Start with the rootnode, leftsubtree,  then the right sidetree, all recursively
+4 -> 1 -> 10 -> 9 -> 8 -> 12 -> 11 -> 14	
+
+```
+
+```
+Pree-order Traversal
+
+	 (4)	
+	/   \	
+      (1)   (10)
+      	    /	\
+	  (9)	(12)
+	  /	/   \
+	(8)    (11) (14)
+Start with leftsubtree,  then the right subtre and then the root, all recursively
+1 -> 8 -> 9 -> 11 -> 14 -> 12 -> 10 -> 4
+
+```
+
+|         | Average time|    Worst Case |
+| --------| ----------- | ------------- |
+| Space   |     O(N)    |     O(N)      |
+| Search  |     O(logN) |     O(N)      | 
+| Insert  |     O(logN) |     O(N)      |
+| Delete  |     O(logN) |     O(N)      |
+
+If the tree gets unbalanced, it can happens the worstcase, so thats is extremelly important to keep it balanced
